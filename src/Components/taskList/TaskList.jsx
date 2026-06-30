@@ -107,8 +107,6 @@ function TaskList() {
 
   return (
     <div className="todolist">
-      <h1>My To-Dos</h1>
-
       <Input
         value={task}
         placeholder="Enter New Task"
@@ -121,26 +119,39 @@ function TaskList() {
       <div className="tasklist">
         {tasks.map((item, index) => (
           <div className="task" key={index}>
-            <p
-              style={{
-                textDecoration: item.completed ? "line-through" : "none",
-              }}
-            >
-              {item.text}
-            </p>
-            <Button
-              text={item.completed ? "Undo" : "Complete"}
-              onClick={() => toggleTask(index)}
-            />
+            <div className="task-top">
+              <p
+                style={{
+                  textDecoration: item.completed ? "line-through" : "none",
+                  color: item.completed ? "#aaa" : "#1a1814",
+                }}
+              >
+                {item.text}
+              </p>
+              <div className="task-actions">
+                <Button
+                  text={item.completed ? "Undo" : "Complete"}
+                  onClick={() => toggleTask(index)}
+                  className="btn-complete"
+                />
 
-            <Button text="Remove Task" onClick={() => deleteTask(index)} />
+                <Button
+                  text="Remove Task"
+                  onClick={() => deleteTask(index)}
+                  className="btn-remove"
+                />
 
-            {/* Break it down button — disabled while loading */}
-            <Button
-              text={loadingIndex === index ? "Thinking..." : "Break it down"}
-              onClick={() => breakdownTask(index)}
-              disabled={loadingIndex === index}
-            />
+                {/* Break it down button — disabled while loading */}
+                <Button
+                  text={
+                    loadingIndex === index ? "Thinking..." : "Break it down"
+                  }
+                  onClick={() => breakdownTask(index)}
+                  disabled={loadingIndex === index}
+                  className="btn-ai"
+                />
+              </div>
+            </div>
 
             {/* Error message for this specific task */}
             {errors[index] && (

@@ -1,7 +1,13 @@
-function Button({ text, onClick, type = "button", disabled = false }) {
+function Button({
+  text,
+  onClick,
+  type = "button",
+  disabled = false,
+  className = "btn-add",
+}) {
   return (
     <button
-      className="clicky"
+      className={className}
       type={type}
       onClick={onClick}
       disabled={disabled}

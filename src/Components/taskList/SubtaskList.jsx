@@ -7,6 +7,7 @@ function SubtaskList({ subtasks, taskIndex, onToggleSubtask }) {
 
   return (
     <div className="subtask-list">
+      <div className="subtask-label">+ AI breakdown </div>
       {subtasks.map((subtask, subIndex) => (
         <div key={subIndex} className="subtask">
           <input
